@@ -25,7 +25,7 @@ export class GameService {
   makeMove(index: number): void {
     const currentState = this.gameStateSubject.value;
     if (currentState.board[index] || currentState.winner) return;
-
+    console.log("first Test");
     const newBoard = [...currentState.board];
     newBoard[index] = currentState.currentPlayer;
 
@@ -54,7 +54,7 @@ export class GameService {
     const move = this.getBestMove(currentState.difficulty);
     const newBoard = [...currentState.board];
     newBoard[move] = 'O';
-
+  console.log("Second Test - Test");
     const winner = this.checkWinner(newBoard);
     this.gameStateSubject.next({
       ...currentState,
@@ -95,10 +95,10 @@ export class GameService {
     if (this.checkWinner(board) === 'O') return { score: 1, index: -1 };
     if (this.checkWinner(board) === 'X') return { score: -1, index: -1 };
     if (availableMoves.length === 0) return { score: 0, index: -1 };
-
+  
     let bestScore = isMaximizing ? -Infinity : Infinity;
     let bestMove = -1;
-
+    console.log("Third Test - Test");
     for (const move of availableMoves) {
       const newBoard = [...board];
       newBoard[move] = player;
